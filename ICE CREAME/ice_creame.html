@@ -28,8 +28,10 @@
 
         body {
             width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, #2c003e, #ff6f91);
+            min-height: 100vh;
+            background-color: black;
+            color:white;
+            overflow-x: hidden;
 
         }
 
@@ -54,6 +56,7 @@
             cursor: pointer;
             position: relative;
             padding: 3px;
+    
         }
 
         #logo::before {
@@ -159,16 +162,17 @@
             }
 
         }
-/* 
-        #sidebar {
-            position: absolute;
+
+        .sidebar {
             left: 0;
-            background-color: rgb(174, 0, 255);
+            background-color: rgb(16, 15, 17);
             height: 100vh;
             width: 250px;
-            position:relative;
+            position: absolute;
             border:none;
             outline:none;
+            transform: translateX(-300px);
+            transition: all 0.3s ease-in-out;
 
         }
         
@@ -184,7 +188,37 @@
             color:red;
             outline:none;
             border:none;
-        } */
+        }
+
+        .sidebar ul{
+            width:100%;
+            padding-top: 30px;
+            padding-left: 10px;
+        }
+
+        .sidebar ul li{
+            width:100%;
+            padding:10px;
+            cursor:pointer;
+        }
+        .sidebar ul li:hover,.sidebar ul li a:hover li{
+            background-color: #fff;
+        }     
+        .sidebar ul li:hover a{
+            color:black;
+
+        }   
+        .sidebar ul li a{
+            text-decoration: none;
+            color:#fff;
+            text-align: center;
+            width: 100%;
+
+        }
+
+        .show{
+            transform: translateX(0);
+        }
     </style>
 </head>
 
@@ -209,7 +243,7 @@
         </button>
 
     </nav>
-    <!-- <div id="sidebar">
+    <div class="sidebar">
         <button id="close"><i class="fa-solid fa-xmark"></i></button>
         <ul>
             <li><a href="#">Home</a></li>
@@ -220,8 +254,7 @@
             <li><a href="#">Contact</a></li>
         </ul>
 
-    </div> -->
-
+    </div>
     <section id="Home">
         <div class="description">
             <h2>Scoops of Joy</h2>
@@ -239,6 +272,22 @@
         </div>
 
     </section>
+
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarbtn = document.querySelector(".btn");
+        let close = document.getElementById("close");
+        
+        sidebarbtn.addEventListener("click",function(){
+            sidebar.classList.add("show");
+        })
+
+        close.addEventListener("click",function(){
+            sidebar.classList.remove("show");
+        })
+
+    </script>
 </body>
 
-</html> why scroll bar is accure
+</html> 

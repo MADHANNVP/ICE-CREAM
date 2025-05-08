@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE CREAME</title>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <!-- fontawasom -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, #2c003e, #ff6f91);
+
+        }
+
+        /* nav */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+
+        }
+
+        #logo {
+            margin-left: 100px;
+            color: white;
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            cursor: pointer;
+            position: relative;
+            padding: 3px;
+        }
+
+        #logo::before {
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            bottom: 0;
+            left: 0px;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+            box-shadow: rgb(241, 241, 241) 0px 5px 20px 2px;
+        }
+
+        #logo:hover::before {
+
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            margin-right: 100px;
+        }
+
+        nav ul li {
+            list-style-type: none;
+            padding: 3px;
+            position: relative;
+
+        }
+
+        nav ul li::before {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            box-shadow: rgb(241, 241, 241) 0px 5px 20px 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+            transform: scale(0);
+        }
+
+        nav ul li:hover::before {
+            transform: scale(1);
+
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            margin: 20px;
+            margin-top: 25px;
+            padding: 3px;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+
+        }
+
+        .btn span {
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        @media (max-width:767px) {
+            #logo {
+                /* margin-left: 100px; */
+                margin-left: 0;
+            }
+
+            nav ul {
+                display: none;
+
+            }
+
+            nav {
+                margin-top: 5px;
+            }
+
+            .btn {
+                display: flex;
+            }
+
+        }
+/* 
+        #sidebar {
+            position: absolute;
+            left: 0;
+            background-color: rgb(174, 0, 255);
+            height: 100vh;
+            width: 250px;
+            position:relative;
+            border:none;
+            outline:none;
+
+        }
+        
+        #close{
+            padding:10px;
+            font-size: 18px;
+            font-weight: 100;
+            position: absolute;
+            right:0;
+            top:0;
+            cursor: pointer;
+            background-color: transparent;
+            color:red;
+            outline:none;
+            border:none;
+        } */
+    </style>
+</head>
+
+
+<body>
+    <nav>
+        <h1 id="logo">🍨&nbsp;ICE CREAM</h1>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <button class="btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+    <!-- <div id="sidebar">
+        <button id="close"><i class="fa-solid fa-xmark"></i></button>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+    </div> -->
+
+    <section id="Home">
+        <div class="description">
+            <h2>Scoops of Joy</h2>
+            <p>Welcome to the world of creamy delights and colorful flavors!
+                At Scoops of Joy, every scoop is made with love and real ingredients.
+                From classic vanilla to fruity swirls, we serve smiles in every bite.
+                Treat yourself to happiness—one scoop at a time!</p>
+            <div>
+                <button class="order-now">Order Now</button>
+                <button class="contact us">Contact Us</button>
+            </div>
+        </div>
+        <div class="icecream-image">
+            <img src="image/ice_creame_image.png" alt="">
+        </div>
+
+    </section>
+</body>
+
+</html> why scroll bar is accure

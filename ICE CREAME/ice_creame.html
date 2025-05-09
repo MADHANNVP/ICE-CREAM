@@ -30,7 +30,7 @@
             width: 100vw;
             min-height: 100vh;
             background-color: black;
-            color:white;
+            color: white;
             overflow-x: hidden;
 
         }
@@ -56,7 +56,7 @@
             cursor: pointer;
             position: relative;
             padding: 3px;
-    
+
         }
 
         #logo::before {
@@ -169,55 +169,94 @@
             height: 100vh;
             width: 250px;
             position: absolute;
-            border:none;
-            outline:none;
+            border: none;
+            outline: none;
             transform: translateX(-300px);
             transition: all 0.3s ease-in-out;
 
         }
-        
-        #close{
-            padding:10px;
+
+        #close {
+            padding: 10px;
             font-size: 18px;
             font-weight: 100;
             position: absolute;
-            right:0;
-            top:0;
+            right: 0;
+            top: 0;
             cursor: pointer;
             background-color: transparent;
-            color:red;
-            outline:none;
-            border:none;
+            color: red;
+            outline: none;
+            border: none;
         }
 
-        .sidebar ul{
-            width:100%;
+        .sidebar ul {
+            width: 100%;
             padding-top: 30px;
             padding-left: 10px;
         }
 
-        .sidebar ul li{
-            width:100%;
-            padding:10px;
-            cursor:pointer;
+        .sidebar ul li {
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
         }
-        .sidebar ul li:hover,.sidebar ul li a:hover li{
-            background-color: #fff;
-        }     
-        .sidebar ul li:hover a{
-            color:black;
 
-        }   
-        .sidebar ul li a{
+        .sidebar ul li:hover,
+        .sidebar ul li a:hover li {
+            background-color: #fff;
+        }
+
+        .sidebar ul li:hover a {
+            color: black;
+
+        }
+
+        .sidebar ul li a {
             text-decoration: none;
-            color:#fff;
+            color: #fff;
             text-align: center;
             width: 100%;
 
         }
 
-        .show{
+        .show {
             transform: translateX(0);
+        }
+
+        #Home {
+            /* display: flex; */
+            /* margin-top: 200px; */
+            width: 100%;
+        }
+
+        .description {
+            margin-top: 50px;
+
+        }
+
+        .description h2 {
+            font-size: 45px;
+            text-shadow: 0 0 5px #ED0909;
+            padding: 10px;
+            margin-left: 40px;
+
+        }
+
+        .description div {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .description div p {
+            width: 90%;
+            letter-spacing: 1px;
+            font-family: "Playfair Display", serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
         }
     </style>
 </head>
@@ -258,10 +297,12 @@
     <section id="Home">
         <div class="description">
             <h2>Scoops of Joy</h2>
-            <p>Welcome to the world of creamy delights and colorful flavors!
-                At Scoops of Joy, every scoop is made with love and real ingredients.
-                From classic vanilla to fruity swirls, we serve smiles in every bite.
-                Treat yourself to happiness—one scoop at a time!</p>
+            <div>
+                <p>Welcome to the world of creamy delights and colorful flavors!
+                    At Scoops of Joy, every scoop is made with love and real ingredients.
+                    From classic vanilla to fruity swirls, we serve smiles in every bite.
+                    Treat yourself to happiness—one scoop at a time!</p>
+            </div>
             <div>
                 <button class="order-now">Order Now</button>
                 <button class="contact us">Contact Us</button>
@@ -278,16 +319,16 @@
         let sidebar = document.querySelector(".sidebar");
         let sidebarbtn = document.querySelector(".btn");
         let close = document.getElementById("close");
-        
-        sidebarbtn.addEventListener("click",function(){
+
+        sidebarbtn.addEventListener("click", function () {
             sidebar.classList.add("show");
         })
 
-        close.addEventListener("click",function(){
+        close.addEventListener("click", function () {
             sidebar.classList.remove("show");
         })
 
     </script>
 </body>
 
-</html> 
+</html>

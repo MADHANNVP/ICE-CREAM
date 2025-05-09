@@ -258,6 +258,75 @@
             font-weight: weight;
             font-style: normal;
         }
+
+       
+       #details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        #details button {
+            width: 200px; 
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #details button::before {
+            content: "";
+            position: absolute;
+            width: calc(100% + 4px); 
+            height: calc(100% + 4px);
+            background-image: conic-gradient(
+                #008cff,
+                #e100ff,
+                #e100ff,
+                #008cff,
+                #008cff
+            );
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            border-radius: 12px; 
+            animation: rotate 4s linear infinite;
+        }
+
+      
+        #details button::after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 4px); 
+            height: calc(100% - 4px);
+            background-color: black; 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px; 
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -303,7 +372,7 @@
                     From classic vanilla to fruity swirls, we serve smiles in every bite.
                     Treat yourself to happiness—one scoop at a time!</p>
             </div>
-            <div>
+            <div id="details">
                 <button class="order-now">Order Now</button>
                 <button class="contact us">Contact Us</button>
             </div>

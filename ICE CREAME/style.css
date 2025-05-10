@@ -1,0 +1,374 @@
+ * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+
+        }
+
+        /* nav */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+
+        }
+
+        #logo {
+            margin-left: 100px;
+            color: white;
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            cursor: pointer;
+            position: relative;
+            padding: 3px;
+
+        }
+
+        #logo::before {
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            bottom: 0;
+            left: 0px;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+            box-shadow: rgb(241, 241, 241) 0px 5px 20px 2px;
+        }
+
+        #logo:hover::before {
+
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            margin-right: 100px;
+        }
+
+        nav ul li {
+            list-style-type: none;
+            padding: 3px;
+            position: relative;
+
+        }
+
+        nav ul li::before {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            box-shadow: rgb(241, 241, 241) 0px 5px 20px 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+            transform: scale(0);
+        }
+
+        nav ul li:hover::before {
+            transform: scale(1);
+
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            margin: 20px;
+            margin-top: 25px;
+            padding: 3px;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+
+        }
+
+        .btn span {
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+    
+
+        @media (max-width:767px) {
+            #logo {
+                /* margin-left: 100px; */
+                margin-left: 0;
+            }
+
+            nav ul {
+                display: none;
+
+            }
+
+            nav {
+                margin-top: 5px;
+            }
+
+            .btn {
+                display: flex;
+            }
+
+        }
+
+        .sidebar {
+            left: 0;
+            background-color: rgb(16, 15, 17);
+            height: 100vh;
+            width: 250px;
+            position: absolute;
+            border: none;
+            outline: none;
+            transform: translateX(-300px);
+            transition: all 0.3s ease-in-out;
+            z-index: 100;
+
+        }
+
+        #close {
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 100;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            background-color: transparent;
+            color: red;
+            outline: none;
+            border: none;
+        }
+
+        .sidebar ul {
+            width: 100%;
+            padding-top: 30px;
+            padding-left: 10px;
+        }
+
+        .sidebar ul li {
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover,
+        .sidebar ul li a:hover li {
+            background-color: #fff;
+        }
+
+        .sidebar ul li:hover a {
+            color: black;
+
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+
+        }
+
+        .show {
+            transform: translateX(0);
+        }
+
+        #Home {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .description {
+            margin-top: 50px;
+
+        }
+
+        .description h2 {
+            font-size: 25px;
+            text-shadow: 0 0 5px #ED0909;
+            padding: 10px;
+            margin-left: 40px;
+
+        }
+
+        .description div {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .description div p {
+            width: 90%;
+            letter-spacing: 1px;
+            font-family: "Playfair Display", serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+        }
+
+       
+       #details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        #details button {
+            width: 200px; 
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #details button::before {
+            content: "";
+            position: absolute;
+            width: calc(100% + 4px); 
+            height: calc(100% + 4px);
+            background-image: conic-gradient(
+                #008cff,
+                #e100ff,
+                #e100ff,
+                #008cff,
+                #008cff
+            );
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            border-radius: 12px; 
+            animation: rotate 4s linear infinite;
+        }
+
+      
+        #details button::after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 4px); 
+            height: calc(100% - 4px);
+            background-color: black; 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px; 
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .icecream-image{
+            display:flex;
+            justify-content: center;
+        }
+
+        img {
+            width: 350px;
+            height: 350px;
+        }
+
+        @media (min-width:767px)
+        {
+           #Home {
+            display: flex;
+            flex-direction: row;
+            margin-top: 200px;
+            margin-left:100px;
+            width: 100%;
+        } 
+
+         .description h2 {
+            font-size: 45px;
+            text-shadow: 0 0 5px #ED0909;
+            padding: 10px;
+            margin-left: 40px;
+            
+        }
+        
+        .description .desc {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-left: 40px;
+            padding: 10px;
+        }
+        .description .desc p {
+            width: 70%;
+            letter-spacing: 1px;
+            font-family: "Playfair Display", serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+        }
+        #details {
+            display: flex;
+            justify-content:flex-start;
+            gap: 20px;
+            width: 100%;
+        }
+
+         .icecream-image{
+            width:100%;
+            display:flex;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        .icecream-image img {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            left:-10%;
+            bottom:-40%;
+            
+        
+        }
+        }

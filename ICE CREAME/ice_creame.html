@@ -22,23 +22,23 @@
 
     <link rel="stylesheet" href="style.css">
     <style>
-
-        .menu--heading--div{
-            display:flex;
+        .menu--heading--div {
+            display: flex;
             justify-content: center;
             align-items: center;
         }
-      .menu--heading{
-        padding:10px;
-        margin:10px;
-        font-size: 30px;
-        font-weight: 900;
+
+        .menu--heading {
+            padding: 10px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: 900;
             position: relative;
             user-select: none;
+            color: white
+        }
 
-
-      }
-    .menu--heading::before {
+        .menu--heading::before {
 
             position: absolute;
             content: " ";
@@ -55,36 +55,62 @@
             left: 0;
         }
 
-        .menu--1--heading{
-            margin-left:25px;
+        .menu--1--heading {
+            color: red;
+            margin-left: 25px;
             margin-top: 10px;
             text-decoration: underline;
         }
 
-        .menu--1--div{
-            display:flex;
+        .menu--2--heading {
+            color: red;
+            margin-left: 25px;
+            margin-top: 10px;
+            text-decoration: underline;
+            padding-top: 10px;
+        }
+
+        .menu--1--div,
+        .menu--2--div {
+            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
 
-        .ice-cream{
+        .ice-cream {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 2px solid red;
-            padding:10px;
-            width:100%;
+            border-bottom: 2px solid rgb(153, 7, 238);
+            padding: 10px;
+            padding-bottom: 30px;
+            width: 100%;
         }
 
-        .ice-cream h3{
+        .ice-cream h3 {
             font-size: 27px;
-            padding:4px;
+            padding: 4px;
+            color: rgb(133, 62, 190);
         }
-         
-        .ice-cream p{
+
+        .ice-cream p {
             font-size: 18px;
+            text-align: center;
+        }
+
+        @media (min-width:767px) {
+
+            .menu--1--div,
+            .menu--2--div {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
         }
     </style>
 </head>
@@ -171,40 +197,77 @@
 
     <section id="menu">
         <div class="menu--heading--div">
-        <h1 class="menu--heading">OUR MENU</h1>
-</div>
+            <h1 class="menu--heading">OUR MENU</h1>
+        </div>
         <h2 class="menu--1--heading"> Classic Flavors</h2>
         <div class="menu--1--div">
-        <div class="ice-cream">
-            <img src="image/vanilla-ice.png" alt="">
-            <h3><strong>Vanilla</strong> - ₹80<br></h3>
-            <p> A smooth and creamy flavor loved by all ages.</p>
+            <div class="ice-cream">
+                <img src="image/vanilla-ice.png" alt="">
+                <h3><strong>Vanilla</strong> - ₹80<br></h3>
+                <p> A smooth and creamy flavor loved by all ages.</p>
+            </div>
+            <div class="ice-cream"><img src="image/Chocolate.png" alt="">
+                <h3><strong>Chocolate</strong> - ₹80<br></h3>
+                <p> Rich and velvety cocoa flavor for true chocoholics.</p>
+            </div>
+            <div class="ice-cream"><img src="image/1.png" alt="">
+                <h3><strong>Strawberry</strong> - ₹80<br></h3>
+                <p> Sweet and fruity with real strawberry essence.</p>
+            </div>
         </div>
-        <div class="ice-cream"><img src="image/Chocolate.png" alt="">
-            <h3><strong>Chocolate</strong> - ₹80<br></h3>
-            <p> Rich and velvety cocoa flavor for true chocoholics.</p></div>
-        <div class="ice-cream"><img src="image/1.png" alt="">
-            <h3><strong>Strawberry</strong> - ₹80<br></h3>
-            <p>   Sweet and fruity with real strawberry essence.</p>
+
+
+        <h2 class="menu--2--heading"> Premium Flavors</h2>
+        <div class="menu--2--div">
+            <div class="ice-cream">
+                <img src="image/Cookie Dough.png" alt="">
+                <h3><strong>Cookie Dough</strong> - ₹120 - </h3>
+                <p>Loaded with chunks.</p>
+            </div>
+            <div class="ice-cream"><img src="image/Salted Caramel.png" alt="">
+                <h3><strong>Salted Caramel</strong> - ₹120</h3>
+                <p> Sweet and salty swirl.</p>
+            </div>
+            <div class="ice-cream"><img src="image/Rocky Road.png" alt="">
+                <h3><strong>Rocky Road</strong> - ₹120</h3>
+                <p>Chocolate, nuts & marshmallows.</p>
+            </div>
         </div>
-</div>
-    </section>
+
+        
+        <h2 class="menu--2--heading"> Premium Flavors</h2>
+        <div class="menu--2--div">
+            <div class="ice-cream">
+                <img src="image/Cookie Dough.png" alt="">
+                <h3><strong>Cookie Dough</strong> - ₹120 - </h3>
+                <p>Loaded with chunks.</p>
+            </div>
+            <div class="ice-cream"><img src="image/Salted Caramel.png" alt="">
+                <h3><strong>Salted Caramel</strong> - ₹120</h3>
+                <p> Sweet and salty swirl.</p>
+            </div>
+            <div class="ice-cream"><img src="image/Rocky Road.png" alt="">
+                <h3><strong>Rocky Road</strong> - ₹120</h3>
+                <p>Chocolate, nuts & marshmallows.</p>
+            </div>
+        </div>
 
 
-    <script>
-        let sidebar = document.querySelector(".sidebar");
-        let sidebarbtn = document.querySelector(".btn");
-        let close = document.getElementById("close");
 
-        sidebarbtn.addEventListener("click", function () {
-            sidebar.classList.add("show");
-        })
+        <script>
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarbtn = document.querySelector(".btn");
+            let close = document.getElementById("close");
 
-        close.addEventListener("click", function () {
-            sidebar.classList.remove("show");
-        })
+            sidebarbtn.addEventListener("click", function () {
+                sidebar.classList.add("show");
+            })
 
-    </script>
+            close.addEventListener("click", function () {
+                sidebar.classList.remove("show");
+            })
+
+        </script>
 </body>
 
 </html>

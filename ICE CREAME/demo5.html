@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        #contact{
+            width:100%;
+            height:750px;
+            background-color: black;
+            color:white;
+        }
+
+        .contact--div{
+            width:100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+        }
+    .contact--heading--div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact--heading {
+            padding: 10px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: 900;
+            position: relative;
+            user-select: none;
+            color: white;
+            margin:10px;
+        }
+
+        .contact--heading::before {
+
+            position: absolute;
+            content: " ";
+            width: 50%;
+            height: 3px;
+            border-radius: 25px;
+            background-color: red;
+            bottom: 2px;
+            left: 25%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .contact--heading:hover::before {
+            width: 100%;
+            left:0;
+        }
+
+        .contact--div
+        {
+            width:100%;
+            height:fit-content;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+        }
+        .contact--information{
+            width:100%;
+            padding:20px; 
+            margin:20px;
+            display: flex;
+            justify-content: center;
+        }
+        table,tr,td,form{
+            width:100%;
+        }
+        td{
+            display: flex;
+            justify-content: center;
+        }
+
+        .name{
+            width:80%;
+            padding:10px;
+            outline:none;
+            border:1px solid #fc427b;
+            font-size: 17px;
+        }
+
+        .email{
+            width:80%;
+            padding:10px;
+            outline:none;
+            border:1px solid #fc427b;
+            font-size: 17px;
+        }
+        .text-area{
+            width:80%;
+            padding:10px;
+            outline:none;
+            border:1px solid #fc427b;
+            font-size: 17px;
+        }
+        .submit{
+            border-radius:25px;
+            outline:none;
+            border:1px solid #fc427b;
+            margin:20px;
+            padding: 10px 20px;
+            cursor:pointer;
+        }
+
+        .location{
+            width:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap:10px;
+        }
+
+        .location p{
+           width:90%;
+            padding:10px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        #footer{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: rgb(39, 37, 37);
+            color:white;
+            width:100%;
+            height:80px;
+        }
+
+        .social--media{
+            display:flex;
+            gap:10px;
+        }
+        
+        .social--media i{
+            
+            cursor:pointer;
+        }
+
+        @media (min-width:767px)
+        {
+
+              #contact{
+            width:100%;
+            height:fit-content;
+            background-color: black;
+            color:white;
+        }
+
+            .contact--div
+        {
+            width:100%;
+            height:600px;
+            display: flex;
+            flex-direction:row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        }
+    </style>
+
+</head>
+<body>
+    <section id="contact">
+        <div class="contact--heading--div">
+            <h2 class="contact--heading">CONTACT US</h2>
+        </div>
+        <div class="contact--div">
+        <div class="location">
+           <p><i class="fa-solid fa-location-crosshairs"></i> &nbsp; 123 Nagapattinam vedaranyam </p>
+           <p><i class="fa-solid fa-envelope"></i>  &nbsp; info@ScoopsofJoywebsite.com</p>
+           <p><i class="fa-solid fa-phone"></i> &nbsp;91+9968249487</p>
+           <p><i class="fa-regular fa-clock"></i>&nbsp;Monday - Friday: 9.00 AM - 5.00 PM</p>
+           <p><i class="fa-regular fa-clock"></i>&nbsp;Saturday : 10.00 AM - 3.00 PM</p>
+           <p><i class="fa-regular fa-clock"></i>&nbsp;Sanday:Closed</p>
+           <p><i class="fa-solid fa-globe"></i>&nbsp;www.ScoopsofJoywebsite.com</p>
+        </div>
+        <div class="contact--information">
+        <form action="">
+            <table>
+                <tr>
+                    <td><input type="text" class="name" placeholder="YOUR NAME"></td>
+                </tr>
+                <tr>
+                    <td><input type="email" name="email" class="email" placeholder="YOUR EMAIL"></td>
+                </tr>
+                <tr>
+                    <td><textarea name="" class="text-area" placeholder="YOUR MESSAGE"></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" class="submit"></td>
+                </tr>
+            </table>
+        </form>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <div>
+        <p>&copy; 2025 Scoops of Joy </p>
+    </div>
+    <div class="social--media">
+            <i class="fa-brands fa-instagram instagram"></i>
+                <i class="fa-brands fa-x-twitter twitter"></i>
+                <i class="fa-brands fa-youtube youtube"></i>
+                <i class="fa-brands fa-facebook facebook"></i>
+    </div>
+    <div>
+        <p>Privacy policy Refund policy</p>
+    </div>
+</footer>
+</body>
+</html>

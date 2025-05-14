@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
+    }
+#customer-review {
+    width: 100%;
+    height:500px;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+    .customer--review--container{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+
+    }
+  .container--1{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        justify-content: center;
+        border:2px solid #FC427B;
+       box-shadow: #FC427B 0px 3px 3px;
+        border-radius: 5px;
+        margin:30px;
+    }
+    .container--2{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        justify-content: center;
+        border:2px solid #FC427B;
+       box-shadow: #FC427B 0px 3px 3px;
+        border-radius: 5px;
+        margin:30px;
+    }
+    .container--3{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        justify-content: center;
+        border:2px solid #FC427B;
+       box-shadow: #FC427B 0px 3px 3px;
+        border-radius: 5px;
+        margin:30px;
+    }
+
+    .container--1 h3,.container--2 h3,.container--3 h3{
+        padding:4px;
+        font-weight: 500;
+        margin:5px;
+    }
+
+    .container--1 p,.container--2 p,.container--3 p{
+        color:chocolate
+    }
+
+    .box{
+        width:200px;
+        height:200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .box img{
+        width:200px;
+        height:200px;
+    }
+
+    .customer--review--heading{
+        padding:10px;
+        margin:10px;
+    }
+    @media (min-width:767px){
+
+       .container--1{
+        width:33.33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        justify-content: center;
+        border:2px solid #FC427B;
+       box-shadow: #FC427B 0px 3px 3px;
+        border-radius: 5px;
+        margin:30px;
+    }
+
+    .container--1 p{
+        text-align: center;
+    }
+    .container--2{
+        width:33.33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        justify-content: center;
+        border:2px solid #FC427B;
+       box-shadow: #FC427B 0px 3px 3px;
+        border-radius: 5px;
+        margin:30px;
+    }
+    .container--3{
+        width:33.33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        justify-content: center;
+        border:2px solid #FC427B;
+       box-shadow: #FC427B 0px 3px 3px;
+        border-radius: 5px;
+        margin:30px;
+    }
+
+      .customer--review--container{
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+    }
+
+    }
+</style>
+<body>
+    <section id="customer-review">
+     <h1 class="customer--review--heading">WHAT OUR CUSTOMERS SAY</h1>
+        <div class="customer--review--container">
+           <div class="container--1 contain">
+            <div class="box">
+            <img src="image/testmonials-1.jpeg" alt="">
+            </div>
+            <h3>Riya Sharma</h3>
+            <p>Scoops of jop is my new guilty pleasure! The flavors are unforgettable.</p>
+           </div>
+           <div class="container--2 contain">
+           <div class="box">
+            <img src="image/testmonials-2.jpeg" alt="">
+            </div>
+            <h3>Aditya Mehta</h3>
+            <p>Beautiful presentation and absolutely delicious. Highly recommend!</p>
+           </div>
+           <div class="container--3 contain">
+            <div class="box">
+            <img src="image/testmonials-3.jpeg" alt="">
+            </div>
+            <h3>Sneha Iyer</h3>
+            <p>My kids and I love every scoop! Pure happiness in a cup.</p>
+           </div>
+        </div>
+    </section>
+</body>
+</html>

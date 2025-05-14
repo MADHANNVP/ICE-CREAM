@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testimonials - Scoops of Joy</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+      padding: 40px 0;
+    }
+
+    #testimonials {
+      text-align: center;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    #testimonials h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .testimonial-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-card {
+      min-width: 250px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .testimonial-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 2px solid #ED0909;
+    }
+
+    .testimonial-card h3 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+    }
+
+    .testimonial-card .role {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .nav-button.left {
+      left: 0;
+    }
+
+    .nav-button.right {
+      right: 0;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: gray;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+
+<section id="testimonials">
+  <h2>Testimonials</h2>
+  <div class="slider-container">
+    <button class="nav-button left" onclick="scrollSlider(-1)">❮</button>
+    <div class="testimonial-slider" id="slider">
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Person 1">
+        <h3>Sarah</h3>
+        <div class="role">Ice Cream Lover</div>
+        <p>The best scoops in town! Love the vibe and the taste.</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Person 2">
+        <h3>John</h3>
+        <div class="role">Sweet Tooth</div>
+        <p>Amazing flavors and great service. Highly recommended!</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Person 3">
+        <h3>Emily</h3>
+        <div class="role">Choco Fan</div>
+        <p>The chocolate explosion scoop is my favorite. So creamy!</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Person 4">
+        <h3>Mike</h3>
+        <div class="role">Dad of 3</div>
+        <p>Great place for kids and family. Always a good time.</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Person 5">
+        <h3>Lily</h3>
+        <div class="role">Blogger</div>
+        <p>The design, the flavor, the experience — perfect for photos!</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Person 6">
+        <h3>David</h3>
+        <div class="role">Foodie</div>
+        <p>I travel for food and this is a hidden gem in the city!</p>
+      </div>
+    </div>
+    <button class="nav-button right" onclick="scrollSlider(1)">❯</button>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<script>
+  const slider = document.getElementById('slider');
+  const dotsContainer = document.getElementById('dots');
+  const cards = document.querySelectorAll('.testimonial-card');
+  const cardsPerScroll = 1;
+  let scrollIndex = 0;
+
+  const totalScrolls = Math.ceil(cards.length / cardsPerScroll);
+
+  for (let i = 0; i < totalScrolls; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      slider.scrollLeft = i * (cards[0].offsetWidth + 20); // 20 = gap
+      updateDots(i);
+    });
+    dotsContainer.appendChild(dot);
+  }
+
+  function scrollSlider(direction) {
+    const scrollAmount = (cards[0].offsetWidth + 20) * direction;
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    scrollIndex = Math.min(Math.max(scrollIndex + direction, 0), totalScrolls - 1);
+    updateDots(scrollIndex);
+  }
+
+  function updateDots(index) {
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  // Mouse wheel horizontal scroll
+  slider.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    slider.scrollLeft += e.deltaY;
+    const approxIndex = Math.round(slider.scrollLeft / (cards[0].offsetWidth + 20));
+    scrollIndex = Math.min(Math.max(approxIndex, 0), totalScrolls - 1);
+    updateDots(scrollIndex);
+  });
+</script>
+
+</body>
+</html>

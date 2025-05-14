@@ -4,42 +4,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICE CREAME</title>
+    <title>ICE CREAM</title>
 
-    <!-- google font -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- fontawasom -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- css link  -->
-
-    <link rel="stylesheet" href="style.css">
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+            font-family: "Roboto", sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #logo {
+            color: white;
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            padding: 3px;
+            font-size: 1.5rem;
+        }
+
+        #logo::before {
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            bottom: 0;
+            left: 0px;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+            box-shadow: rgb(241, 241, 241) 0px 5px 20px 2px;
+        }
+
+        #logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li {
+            list-style-type: none;
+            padding: 3px;
+            position: relative;
+        }
+
+        nav ul li::before {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            box-shadow: rgb(241, 241, 241) 0px 5px 20px 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+            transform: scale(0);
+        }
+
+        nav ul li:hover::before {
+            transform: scale(1);
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            padding: 3px;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .btn span {
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgb(16, 15, 17);
+            height: 100vh;
+            width: 250px;
+            transform: translateX(-300px);
+            transition: all 0.3s ease-in-out;
+            z-index: 1001;
+        }
+
+        #close {
+            padding: 10px;
+            font-size: 18px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            background-color: transparent;
+            color: red;
+            outline: none;
+            border: none;
+        }
+
+        .sidebar ul {
+            width: 100%;
+            padding-top: 60px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li {
+            width: 100%;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #fff;
+        }
+
+        .sidebar ul li:hover a {
+            color: black;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #fff;
+            width: 100%;
+            display: block;
+        }
+
+        .show {
+            transform: translateX(0);
+        }
+
+        /* Home Section */
+        #Home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 120px 5% 60px;
+            width: 100%;
+        }
+
+        .description {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .description h2 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 5px #ED0909;
+            margin-bottom: 20px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .desc {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .desc p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-family: "Playfair Display", serif;
+        }
+
+        #details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        #details button {
+            width: 100%;
+            max-width: 200px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #details button::before {
+            content: "";
+            position: absolute;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background-image: conic-gradient(
+                #008cff,
+                #e100ff,
+                #e100ff,
+                #008cff,
+                #008cff
+            );
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            border-radius: 12px;
+            animation: rotate 4s linear infinite;
+        }
+
+        #details button::after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            background-color: black;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .icecream-image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .icecream-image img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        /* About Section */
+        #ABOUT {
+            width: 100%;
+            padding: 80px 5%;
+            background-color: aliceblue;
+            color: black;
+        }
+
+        #about-us {
+            width: 100%;
+        }
+
+        #about-us h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-family: "Playfair Display", serif;
+        }
+
+        #about-us h2::before {
+            position: absolute;
+            content: " ";
+            width: 50%;
+            height: 3px;
+            background-color: red;
+            bottom: 0;
+            left: 25%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #about-us h2:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        #about-us p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .socialmedia {
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .instagram {
+            background: linear-gradient(#f9ce34, #ee2a7b, #6228d7);
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .twitter {
+            background-color: black;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .youtube {
+            background-color: white;
+            color: red;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .facebook {
+            background-color: white;
+            color: blue;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #about-image {
+            width: 100%;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 0 10px 4px inset;
+        }
+
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Menu Section */
+        #menu {
+            width: 100%;
+            padding: 80px 5%;
+            background-color: black;
+        }
+
         .menu--heading--div {
             display: flex;
             justify-content: center;
-            align-items: center;
+            margin-bottom: 40px;
         }
 
         .menu--heading {
-            padding: 10px;
-            margin: 10px;
-            font-size: 30px;
+            font-size: 2.5rem;
             font-weight: 900;
             position: relative;
-            user-select: none;
-            color: white
+            color: white;
+            font-family: "Playfair Display", serif;
         }
 
         .menu--heading::before {
-
             position: absolute;
             content: " ";
             width: 50%;
@@ -55,66 +452,456 @@
             left: 0;
         }
 
-        .menu--1--heading {
-            color: red;
-            margin-left: 25px;
-            margin-top: 10px;
-            text-decoration: underline;
-        }
-
+        .menu--1--heading, 
         .menu--2--heading {
+            font-size: 1.8rem;
             color: red;
-            margin-left: 25px;
-            margin-top: 10px;
+            margin: 40px 0 20px;
             text-decoration: underline;
-            padding-top: 10px;
+            font-family: "Playfair Display", serif;
         }
 
         .menu--1--div,
         .menu--2--div {
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            gap: 30px;
+            width: 100%;
         }
 
         .ice-cream {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             border-bottom: 2px solid rgb(153, 7, 238);
-            padding: 10px;
-            padding-bottom: 30px;
-            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .ice-cream:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(153, 7, 238, 0.2);
+        }
+
+        .ice-cream img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 20px;
         }
 
         .ice-cream h3 {
-            font-size: 27px;
-            padding: 4px;
+            font-size: 1.5rem;
             color: rgb(133, 62, 190);
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: "Playfair Display", serif;
         }
 
         .ice-cream p {
-            font-size: 18px;
+            font-size: 1rem;
             text-align: center;
+            color: #ccc;
         }
 
-        @media (min-width:767px) {
+        /* Testimonials Section */
+        #customer-review {
+            width: 100%;
+            padding: 80px 5%;
+            background-color: black;
+        }
 
-            .menu--1--div,
-            .menu--2--div {
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-                align-items: center;
+        .customer--review--heading {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .customer--review--container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contain {
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 2px solid #FC427B;
+            box-shadow: #FC427B 0px 3px 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .contain:hover {
+            transform: translateY(-10px);
+            box-shadow: #FC427B 0px 10px 20px;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 3px solid #FC427B;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contain h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .contain p {
+            font-size: 1rem;
+            color: chocolate;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            width: 100%;
+            padding: 80px 5%;
+            background-color: white;
+        }
+
+        .gallery--heading--div {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery--heading {
+            font-size: 2.5rem;
+            font-weight: 900;
+            position: relative;
+            color: black;
+            font-family: "Playfair Display", serif;
+        }
+
+        .gallery--heading::before {
+            position: absolute;
+            content: " ";
+            width: 50%;
+            height: 3px;
+            border-radius: 25px;
+            background-color: red;
+            bottom: 2px;
+            left: 25%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .gallery--heading:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        .gallery--container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .boxx {
+            width: 100%;
+            max-width: 350px;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid red;
+            box-shadow: red 0 0 14px 4px;
+            transition: all 0.3s;
+        }
+
+        .boxx:hover {
+            transform: scale(1.05);
+        }
+
+        .boxx img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .boxx:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        #contact {
+            width: 100%;
+            padding: 80px 5%;
+            background-color: black;
+        }
+
+        .contact--heading--div {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .contact--heading {
+            font-size: 2.5rem;
+            font-weight: 900;
+            position: relative;
+            color: white;
+            font-family: "Playfair Display", serif;
+        }
+
+        .contact--heading::before {
+            position: absolute;
+            content: " ";
+            width: 50%;
+            height: 3px;
+            border-radius: 25px;
+            background-color: red;
+            bottom: 2px;
+            left: 25%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .contact--heading:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        .contact--div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .location {
+            width: 100%;
+        }
+
+        .location p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location i {
+            color: #FC427B;
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+
+        .contact--information {
+            width: 100%;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table tr td {
+            margin-bottom: 20px;
+        }
+
+        .name, .email, .text-area {
+            width: 100%;
+            padding: 15px;
+            margin:10px;
+            border: 1px solid #FC427B;
+            background-color: transparent;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .text-area {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit {
+            padding: 15px 30px;
+            background-color: #FC427B;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit:hover {
+            background-color: #e2316b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(252, 66, 123, 0.4);
+        }
+
+        /* Footer */
+        #footer {
+            width: 100%;
+            padding: 30px 5%;
+            background-color: rgb(39, 37, 37);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #footer p {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .social--media {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social--media i {
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .social--media i:hover {
+            transform: translateY(-5px);
+        }
+
+        
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 20px 10%;
             }
 
+            /* Home Section */
+            #Home {
+                flex-direction: row;
+                align-items: center;
+                padding: 150px 10% 100px;
+                min-height: 100vh;
+            }
+
+            .description {
+                width: 50%;
+                margin-top: 0;
+            }
+
+            .description h2 {
+                font-size: 3.5rem;
+            }
+
+            #details {
+                flex-direction: row;
+            }
+
+            .icecream-image {
+                width: 50%;
+                margin-top: 0;
+            }
+
+            .icecream-image img {
+                max-width: 450px;
+            }
+
+            /* About Section */
+            #ABOUT {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            #about-us {
+                width: 50%;
+                padding-right: 5%;
+            }
+
+            #about-image {
+                width: 50%;
+                margin-top: 0;
+            }
+
+            .circle {
+                width: 400px;
+                height: 400px;
+            }
+
+            /* Menu Section */
+            .menu--1--div,
+            .menu--2--div {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .ice-cream {
+                width: 30%;
+                min-width: 300px;
+            }
+
+            /* Testimonials Section */
+            .customer--review--container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .contain {
+                width: 30%;
+                min-width: 300px;
+            }
+
+            /* Contact Section */
+            .contact--div {
+                flex-direction: row;
+            }
+
+            .location,
+            .contact--information {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav ul {
+                display: none;
+            }
+
+            .btn {
+                display: flex;
+            }
+
+            #logo {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
-
 
 <body>
     <nav>
@@ -123,10 +910,10 @@
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#ABOUT">About</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#customer-review">Testimonials</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
 
         <button class="btn">
@@ -134,20 +921,20 @@
             <span></span>
             <span></span>
         </button>
-
     </nav>
+
     <div class="sidebar">
         <button id="close"><i class="fa-solid fa-xmark"></i></button>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#ABOUT">About</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#customer-review">Testimonials</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-
     </div>
+
     <section id="Home">
         <div class="description">
             <h2>Scoops of Joy</h2>
@@ -159,26 +946,22 @@
             </div>
             <div id="details">
                 <button class="order-now">Order Now</button>
-                <button class="contact us">Contact Us</button>
+                <button class="contact">Contact Us</button>
             </div>
         </div>
         <div class="icecream-image">
-            <img src="image/ice_creame_image.png" alt="">
+            <img src="image/ice_creame_image.png" alt="Ice Cream">
         </div>
-
     </section>
-
 
     <section id="ABOUT">
         <div id="about-us">
             <h2 class="heading-1">ABOUT US</h2>
-
             <P>At Scoops of Joy, we believe happiness comes one scoop at a time! Founded with a passion for crafting the
-                creamiest, most flavorful ice creams, we’ve been serving smiles since day one. Whether you’re craving a
+                creamiest, most flavorful ice creams, we've been serving smiles since day one. Whether you're craving a
                 classic vanilla, a swirl of chocolate fudge, or an adventurous seasonal flavor, every scoop is made with
-                love and the finest ingredients.
-
-                We’re not just about ice cream — we’re about creating joyful moments. From sunny afternoons to family
+                love and the finest ingredients.</P>
+            <P>We're not just about ice cream — we're about creating joyful moments. From sunny afternoons to family
                 celebrations, Scoops of Joy is here to make life a little sweeter. Come for the ice cream, stay for the
                 smiles!</P>
             <div class="socialmedia">
@@ -190,7 +973,7 @@
         </div>
         <div id="about-image">
             <div class="circle">
-                <img src="image/about_image.jpeg" alt="ice cream">
+                <img src="image/about_image.jpeg" alt="Ice Cream Shop">
             </div>
         </div>
     </section>
@@ -202,58 +985,194 @@
         <h2 class="menu--1--heading"> Classic Flavors</h2>
         <div class="menu--1--div">
             <div class="ice-cream">
-                <img src="image/vanilla-ice.png" alt="">
+                <img src="image/vanilla-ice.png" alt="Vanilla Ice Cream">
                 <h3><strong>Vanilla</strong> - ₹80<br></h3>
                 <p> A smooth and creamy flavor loved by all ages.</p>
             </div>
-            <div class="ice-cream"><img src="image/Chocolate.png" alt="">
+            <div class="ice-cream">
+                <img src="image/Chocolate.png" alt="Chocolate Ice Cream">
                 <h3><strong>Chocolate</strong> - ₹80<br></h3>
                 <p> Rich and velvety cocoa flavor for true chocoholics.</p>
             </div>
-            <div class="ice-cream"><img src="image/1.png" alt="">
+            <div class="ice-cream">
+                <img src="image/22.png" alt="Strawberry Ice Cream">
                 <h3><strong>Strawberry</strong> - ₹80<br></h3>
                 <p> Sweet and fruity with real strawberry essence.</p>
             </div>
         </div>
 
-
         <h2 class="menu--2--heading"> Premium Flavors</h2>
         <div class="menu--2--div">
             <div class="ice-cream">
-                <img src="image/Cookie Dough.png" alt="">
-                <h3><strong>Cookie Dough</strong> - ₹120 - </h3>
-                <p>Loaded with chunks.</p>
+                <img src="image/Cookie Dough.png" alt="Cookie Dough Ice Cream">
+                <h3><strong>Cookie Dough</strong> - ₹120</h3>
+                <p>Loaded with chunks of cookie dough.</p>
             </div>
-            <div class="ice-cream"><img src="image/Salted Caramel.png" alt="">
+            <div class="ice-cream">
+                <img src="image/Salted Caramel.png" alt="Salted Caramel Ice Cream">
                 <h3><strong>Salted Caramel</strong> - ₹120</h3>
                 <p> Sweet and salty swirl.</p>
             </div>
-            <div class="ice-cream"><img src="image/Rocky Road.png" alt="">
+            <div class="ice-cream">
+                <img src="image/Rocky Road.png" alt="Rocky Road Ice Cream">
                 <h3><strong>Rocky Road</strong> - ₹120</h3>
                 <p>Chocolate, nuts & marshmallows.</p>
             </div>
         </div>
 
-        
-        <h2 class="menu--2--heading"> Premium Flavors</h2>
+        <h2 class="menu--2--heading"> Sundaes</h2>
         <div class="menu--2--div">
             <div class="ice-cream">
-                <img src="image/Cookie Dough.png" alt="">
-                <h3><strong>Cookie Dough</strong> - ₹120 - </h3>
-                <p>Loaded with chunks.</p>
+                <img src="image/Brownie Blast.png" alt="Brownie Blast Sundae">
+                <h3><strong>Brownie Blast</strong> - ₹150</h3>
+                <p>Brownie with fudge & cream.</p>
             </div>
-            <div class="ice-cream"><img src="image/Salted Caramel.png" alt="">
-                <h3><strong>Salted Caramel</strong> - ₹120</h3>
-                <p> Sweet and salty swirl.</p>
+            <div class="ice-cream">
+                <img src="image/Fruit Fiesta.png" alt="Fruit Fiesta Sundae">
+                <h3><strong>Fruit Fiesta</strong> - ₹140</h3>
+                <p> Seasonal fruits & ice cream.</p>
             </div>
-            <div class="ice-cream"><img src="image/Rocky Road.png" alt="">
-                <h3><strong>Rocky Road</strong> - ₹120</h3>
-                <p>Chocolate, nuts & marshmallows.</p>
+            <div class="ice-cream">
+                <img src="image/11.png" alt="Crunchy Delight Sundae">
+                <h3><strong>Crunchy Delight</strong> - ₹145</h3>
+                <p>Nuts, sprinkles & caramel.</p>
             </div>
         </div>
 
+        <h2 class="menu--2--heading"> Toppings</h2>
+        <div class="menu--2--div">
+            <div class="ice-cream">
+                <img src="image/33-removebg-preview.png" alt="Sprinkles">
+                <h3><strong>Sprinkles</strong> - ₹20</h3>
+                <p>Colorful candy crunch.</p>
+            </div>
+            <div class="ice-cream">
+                <img src="image/44.png" alt="Hot Fudge">
+                <h3><strong>Hot Fudge</strong> - ₹40</h3>
+                <p> Warm chocolate sauce.</p>
+            </div>
+            <div class="ice-cream">
+                <img src="image/1.png" alt="Whipped Cream">
+                <h3><strong>Whipped Cream</strong> - ₹30</h3>
+                <p>Light and fluffy.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section id="customer-review">
+        <h1 class="customer--review--heading">TESTIMONIALS</h1>
+        <div class="customer--review--container">
+            <div class="container--1 contain">
+                <div class="box">
+                    <img src="image/testmonials-1.jpeg" alt="Riya Sharma">
+                </div>
+                <h3>Riya Sharma</h3>
+                <p>Scoops of Joy is my new guilty pleasure! The flavors are unforgettable.</p>
+            </div>
+            <div class="container--2 contain">
+                <div class="box">
+                    <img src="image/testmonials-2.jpeg" alt="Aditya Mehta">
+                </div>
+                <h3>Aditya Mehta</h3>
+                <p>Beautiful presentation and absolutely delicious. Highly recommend!</p>
+            </div>
+            <div class="container--3 contain">
+                <div class="box">
+                    <img src="image/testmonials-3.jpeg" alt="Sneha Iyer">
+                </div>
+                <h3>Sneha Iyer</h3>
+                <p>My kids and I love every scoop! Pure happiness in a cup.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="gallery--heading--div">
+            <h2 class="gallery--heading">GALLERY</h2>
+        </div>
+        <div class="gallery--container">
+            <div class="boxx">
+                <img src="image/img-gallery--1replace.png" alt="Ice Cream 1">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--2.jpg" alt="Ice Cream 2">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--3.jpg" alt="Ice Cream 3">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--4.jpg" alt="Ice Cream 4">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--5.jpg" alt="Ice Cream 5">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--6.jpg" alt="Ice Cream 6">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--7.jpg" alt="Ice Cream 7">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--8.jpg" alt="Ice Cream 8">
+            </div>
+            <div class="boxx">
+                <img src="image/img-gallery--9.jpg" alt="Ice Cream 9">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact--heading--div">
+            <h2 class="contact--heading">CONTACT US</h2>
+        </div>
+        <div class="contact--div">
+            <div class="location">
+                <p><i class="fa-solid fa-location-dot"></i> 123 Nagapattinam vedaranyam</p>
+                <p><i class="fa-solid fa-envelope"></i> info@ScoopsofJoywebsite.com</p>
+                <p><i class="fa-solid fa-phone"></i> 91+9968249487</p>
+                <p><i class="fa-regular fa-clock"></i> Monday - Friday: 9.00 AM - 5.00 PM</p>
+                <p><i class="fa-regular fa-clock"></i> Saturday: 10.00 AM - 3.00 PM</p>
+                <p><i class="fa-regular fa-clock"></i> Sunday: Closed</p>
+                <p><i class="fa-solid fa-globe"></i> www.ScoopsofJoywebsite.com</p>
+            </div>
+            <div class="contact--information">
+                <form action="">
+                    <table>
+                        <tr>
+                            <td><input type="text" class="name" placeholder="YOUR NAME"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="email" name="email" class="email" placeholder="YOUR EMAIL"></td>
+                        </tr>
+                        <tr>
+                            <td><textarea name="" class="text-area" placeholder="YOUR MESSAGE"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="submit" class="submit" value="Send Message"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div>
+            <p>&copy; 2025 Scoops of Joy</p>
+        </div>
+        <div class="social--media">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-facebook"></i>
+        </div>
+        <div>
+            <p>Privacy policy | Refund policy</p>
+        </div>
+    </footer>
         <script>
             let sidebar = document.querySelector(".sidebar");
             let sidebarbtn = document.querySelector(".btn");
